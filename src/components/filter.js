@@ -1,24 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { filterUpdate } from '../reducers/actions/filterActions'
 
-const Filter = ({
-  searchInput,
-  setSearchInput
-}) => {
-  // const [searchInput, setSearchInput] = useState("")
+const Filter = () => {
+  const dispatch = useDispatch()
 
-  const handleChange = (event) => setSearchInput(event.target.value)
-
-  const style = {
-    marginBottom: 10
-  }
+  const onChangeHandler = (event) => dispatch(filterUpdate(event.target.value))
 
   return <>
     <h2>筛选名言警句</h2>
     <input
-      style={style}
+      style={{  marginBottom: 10 }}
       type="text"
-      value={searchInput}
-      onChange={handleChange}
+      onChange={onChangeHandler}
       placeholder="搜索名言警句"
     />
   </>
